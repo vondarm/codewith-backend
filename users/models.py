@@ -15,15 +15,8 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_anonymous(self, display_name):
-        user = self.model(
-            display_name=display_name
-        )
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, email, username, password=None, **extra_fields):
-        user = self.create_user(email=email, username=username, password=password, **extra_fields)
+    def create_superuser(self, email, password=None, **extra_fields):
+        user = self.create_user(email=email, password=password, **extra_fields)
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -34,7 +27,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, null=True, blank=True)
     username = models.CharField(max_length=150, unique=True, null=True, blank=True)
     display_name = models.CharField(max_length=150, blank=True)
-    is_anonymous_user = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

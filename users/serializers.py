@@ -11,12 +11,3 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
-
-
-class AnonimousRegisterSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['display_name', 'id']
-
-    def create(self, validated_data):
-        return User.objects.create_anonymous(**validated_data)
