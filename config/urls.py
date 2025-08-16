@@ -1,5 +1,5 @@
 """
-URL configuration for hello_world project.
+URL configuration for config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -20,12 +20,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from hello_world.core import views as core_views
+from config.core import views as core_views
 
 urlpatterns = [
     path("", core_views.index),
-    path("admin/", admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
+    path('api/auth/', include('users.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
