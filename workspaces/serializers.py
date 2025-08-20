@@ -7,3 +7,6 @@ class WorkspaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workspace
         fields = ['id', 'name']
+
+class WorkspaceIdFilterSerializer(serializers.Serializer):
+    workspace_id = serializers.IntegerField()

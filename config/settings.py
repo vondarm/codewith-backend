@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from decouple import config
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,6 +35,13 @@ REST_FRAMEWORK = {
     ),
 }
 
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
+    'ROTATE_REFRESH_TOKENS': True,
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,7 +56,8 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "users",
     "workspaces",
-    "workspace_members"
+    "workspace_members",
+    "rooms"
 ]
 
 MIDDLEWARE = [

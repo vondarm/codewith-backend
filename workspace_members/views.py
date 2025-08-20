@@ -1,7 +1,8 @@
 from rest_framework import viewsets, permissions, serializers
 from rest_framework.views import APIView
+from workspaces.serializers import WorkspaceIdFilterSerializer
 from .models import WorkspaceMember
-from .serializers import WorkspaceMemberSerializer, WorkspaceIdFilterSerializer
+from .serializers import WorkspaceMemberSerializer
 
 
 class WorkspaceMemberViewSet(viewsets.ModelViewSet):

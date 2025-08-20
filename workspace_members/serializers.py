@@ -22,6 +22,3 @@ class WorkspaceMemberSerializer(serializers.ModelSerializer):
 
     def get_display_name(self, member):
         return str(member.user) if member.user else None
-
-class WorkspaceIdFilterSerializer(serializers.Serializer):
-    workspace_id = serializers.IntegerField()

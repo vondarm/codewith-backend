@@ -1,8 +1,8 @@
 from rest_framework.routers import DefaultRouter
-from .views import WorkspaceViewSet
+from .views import RoomViewSet
 
 
 router = DefaultRouter()
-router.register("", WorkspaceViewSet, basename="workspace")
+router.register("", RoomViewSet, basename="rooms")
 
 urlpatterns = router.urls
