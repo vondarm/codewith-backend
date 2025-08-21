@@ -6,9 +6,11 @@ from .permissions import WorkspacePermissions
 
 
 class WorkspaceViewSet(viewsets.ModelViewSet):
-    queryset = Workspace.objects.filter()
     serializer_class = WorkspaceSerializer
     permission_classes = [permissions.IsAuthenticated & WorkspacePermissions]
+
+    def get_queryset(self):
+        return Workspace.objects.filter(members=self.request.user)
 
     def perform_create(self, serializer):
         workspace = serializer.save()
