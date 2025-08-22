@@ -11,7 +11,7 @@ class WorkspaceMemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WorkspaceMember
-        fields = ['id', 'user', 'role', 'workspace', 'display_name', 'email']
+        fields = ['id', 'user', 'role', 'display_name', 'email']
 
     def get_display_name(self, member):
         return str(member.user) if member.user else None

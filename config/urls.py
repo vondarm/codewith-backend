@@ -12,7 +12,8 @@ urlpatterns = [
     path('api/auth/', include('users.urls')),
     path("api/workspace", include("workspaces.urls")),
     path("api/", include("workspace_members.urls")),
-    path("api/room", include("rooms.urls"))
+    path("api/", include("rooms.urls")),
+    path("api/", include("room_member.urls"))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

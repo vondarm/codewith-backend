@@ -1,5 +1,5 @@
 from rest_framework import viewsets, permissions, serializers
-from rest_framework.views import APIView, Response, status
+from rest_framework.views import Response, status
 from workspaces.serializers import WorkspaceIdFilterSerializer
 from .models import WorkspaceMember
 from .serializers import WorkspaceMemberSerializer, WorkspaceMemberCreateSerializer

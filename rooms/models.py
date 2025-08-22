@@ -3,7 +3,7 @@ from workspaces.models import Workspace
 import uuid
 
 class Room(models.Model):
-    room_id = models.UUIDField(
+    public_id = models.UUIDField(
         default=uuid.uuid4,
         unique=True,
         editable=False
@@ -12,6 +12,7 @@ class Room(models.Model):
     environment_id = models.CharField(max_length=100, blank=True)
     code = models.TextField(blank=True)
     description = models.TextField(blank=True)
+    private_description = models.TextField(blank=True)
     workspace = models.ForeignKey(Workspace, on_delete=models.CASCADE)
 
     def __str__(self):

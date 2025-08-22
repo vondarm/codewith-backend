@@ -63,7 +63,8 @@ INSTALLED_APPS = [
     "users",
     "workspaces",
     "workspace_members",
-    "rooms"
+    "rooms",
+    "room_member"
 ]
 
 MIDDLEWARE = [
