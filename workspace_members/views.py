@@ -1,8 +1,8 @@
 from rest_framework import viewsets, permissions, serializers
-from rest_framework.views import APIView
+from rest_framework.views import APIView, Response, status
 from workspaces.serializers import WorkspaceIdFilterSerializer
 from .models import WorkspaceMember
-from .serializers import WorkspaceMemberSerializer
+from .serializers import WorkspaceMemberSerializer, WorkspaceMemberCreateSerializer
 
 
 class WorkspaceMemberViewSet(viewsets.ModelViewSet):
@@ -12,5 +12,14 @@ class WorkspaceMemberViewSet(viewsets.ModelViewSet):
         workspace_id = serializer.validated_data['workspace_id']
         return WorkspaceMember.objects.filter(workspace_id=workspace_id)
 
-    permission_classes = [permissions.AllowAny]
-    serializer_class = WorkspaceMemberSerializer
+    def get_serializer_class(self):
+        if self.action == 'create':
+            return WorkspaceMemberCreateSerializer
+        return WorkspaceMemberSerializer
+
+    def destroy(self, request, pk):
+        instance = WorkspaceMember.objects.get(pk=pk)
+        instance.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    #TODO
+    permission_classes = [permissions.IsAuthenticated]

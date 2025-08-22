@@ -75,6 +75,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "config.middleware.CamelCaseQueryParamsMiddleware"
 ]
 
 X_FRAME_OPTIONS = "ALLOW-FROM preview.app.github.dev"
